@@ -1,0 +1,76 @@
+/* --- 1. THE SMOOTH MORPHING ANIMATION --- */
+@keyframes gradientBreath {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- 2. LIGHT MODE (Champagne & Ice Blue) --- */
+/* --- 2. LIGHT MODE (Cinematic Stadium & Twilight Gold) --- */
+.container.light {
+  --text-main: #1A202C;
+  
+  /* A rich, atmospheric mix of floodlight gold, twilight blue, and warm slate */
+  --mesh-bg: linear-gradient(
+    -45deg, 
+    #66dee0, /* Twilight Blue */
+    #66d178, /* Warm Floodlight Gold */
+    #d7dc74, /* Atmospheric Slate/Grey */
+    #e660da  /* Soft Rim Light Cream */
+  );
+  
+  /* Slightly warmer, more opaque glass to contrast the richer background */
+  --glass-bg: rgba(250, 248, 245, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: rgba(0, 0, 0, 0.12);
+}
+
+/* --- 3. DARK MODE (Obsidian & Twilight Gold) --- */
+/* --- 3. DARK MODE (Obsidian & Twilight Gold) --- */
+.container.dark {
+  --text-main: #E2E8F0;
+  
+  /* THIS IS THE MISSING LINE FIXING YOUR TITLES! */
+  --accent-dark: #FFFFFF; 
+  
+  /* A deep, rich mix of midnight blue, charcoal, and dark stadium gold */
+  --mesh-bg: linear-gradient(
+    -45deg, 
+    #01124c, 
+    #004e08, 
+    #4e5a00, 
+    #3c0039
+  );
+  --glass-bg: rgba(15, 20, 30, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* --- 4. APPLY TO MAIN CONTAINER --- */
+.container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  color: var(--text-main);
+  transition: color 0.6s ease;
+  
+  /* The Animated Gradient */
+  background: var(--mesh-bg);
+  background-size: 300% 300%;
+  animation: gradientBreath 20s ease infinite;
+  background-attachment: fixed;
+  
+  /* Critical: Keeps the grain texture contained */
+  z-index: 1;
+}
+
+/* --- 5. THE CINEMATIC FILM GRAIN --- */
+/* This adds a tiny, subtle texture so the digital colors look like real paper/film */
+.container::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
+}

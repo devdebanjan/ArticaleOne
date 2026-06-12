@@ -1,0 +1,70 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 50px;
+    position: sticky; /* Makes it stay at the top when you scroll */
+    top: 0;
+    z-index: 100;
+    
+    /* Glass effect for the navbar too! */
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--glass-border);
+    
+    transition: background 0.6s ease, border 0.6s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navitem a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-family: var(--font-ui, 'Arial', sans-serif);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.navitem a:hover {
+    color: var(--accent-gold);
+}
+
+.theme-toggle-icon {
+    position: absolute;
+    right: 50px;
+    width: 26px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
+}
+
+.theme-toggle-icon:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 20px;
+    }
+    .nav-links {
+        gap: 20px;
+    }
+    .navitem a {
+        font-size: 0.75rem;
+    }
+    .theme-toggle-icon {
+        right: 20px;
+    }
+}
