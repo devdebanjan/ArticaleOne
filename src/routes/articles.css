@@ -286,20 +286,41 @@
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 768px) {
-    
-    /* Target ONLY the main featured image, NOT the author logo */
-    .featured-image {
-        transition: none !important; 
-        animation: levitateTrophy 4s ease-in-out infinite; 
+/* =========================================
+   ARTICLES PAGE - MOBILE FIXES
+========================================= */
+@media (max-width: 850px) {
+    /* Fix Image 2: Stack the Featured Article image and text */
+    .featured-card {
+        flex-direction: column !important;
     }
     
-    /* If your trophy image in the blog file doesn't use .featured-image, 
-       add this class specifically to the trophy's <img> tag in your JSX:
-       <img src="..." className="trophy-image" />
-       Then uncomment the line below: */
-       
-    /* .trophy-image { animation: levitateTrophy 4s ease-in-out infinite; } */
+    .featured-image-wrapper {
+        width: 100% !important;
+        height: 250px !important; /* Prevents the image from taking up the whole screen */
+    }
+    
+    .featured-content {
+        padding: 25px !important;
+    }
+    
+    /* Fix Image 1: Stack the Contribute Box and Button */
+    .contribute-cta-box {
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 30px 20px !important;
+        gap: 20px !important;
+    }
+
+    .cta-action {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .publish-btn {
+        width: 100%;
+        justify-content: center; /* Centers the text inside the button */
+    }
 }
 
 /* =========================================

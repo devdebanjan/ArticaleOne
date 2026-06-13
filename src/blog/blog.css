@@ -498,3 +498,12 @@ html, body {
     /* Ensure standard images don't break width */
     img { max-width: 100%; height: auto; }
 }
+
+/* Fix Image 3: Force all side-by-side grids to stack vertically */
+    .match-blocks, 
+    .facts-grid, 
+    .nation-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important; /* Forces 1 single column */
+        gap: 30px !important;
+    }
