@@ -286,21 +286,20 @@
 }
 
 /* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 850px) {
-    .featured-card {
-        flex-direction: column;
+@media (max-width: 768px) {
+    
+    /* Target ONLY the main featured image, NOT the author logo */
+    .featured-image {
+        transition: none !important; 
+        animation: levitateTrophy 4s ease-in-out infinite; 
     }
-    .featured-image-wrapper {
-        height: 250px;
-    }
-    .featured-title {
-        font-size: 2rem;
-    }
-    .contribute-cta-box {
-        flex-direction: column;
-        text-align: center;
-        padding: 30px 20px;
-    }
+    
+    /* If your trophy image in the blog file doesn't use .featured-image, 
+       add this class specifically to the trophy's <img> tag in your JSX:
+       <img src="..." className="trophy-image" />
+       Then uncomment the line below: */
+       
+    /* .trophy-image { animation: levitateTrophy 4s ease-in-out infinite; } */
 }
 
 /* =========================================

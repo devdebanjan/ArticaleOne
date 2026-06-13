@@ -74,3 +74,10 @@
   pointer-events: none;
   z-index: -1;
 }
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999; /* Ensures it stays above the floating trophy */
+}
+

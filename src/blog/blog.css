@@ -1,4 +1,6 @@
-/* --- GLOBAL THEME VARIABLES --- */
+/* =========================================
+   1. GLOBAL THEME VARIABLES
+========================================= */
 :root {
     --bg-color: #F8F9FA;      
     --text-main: #212529;     
@@ -12,7 +14,9 @@
     --font-ui: 'Inter', sans-serif;
 }
 
-/* --- ANIMATIONS --- */
+/* =========================================
+   2. ANIMATIONS
+========================================= */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -24,35 +28,49 @@
     100% { transform: translate(-50%, 0px); }
 }
 
+@keyframes levitateTrophy {
+    0% { 
+        transform: translateY(0) scale(1); 
+        filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+    }
+    50% { 
+        transform: translateY(-12px) scale(1.02); 
+        filter: drop-shadow(0 25px 20px rgba(0,0,0,0.4));
+    }
+    100% { 
+        transform: translateY(0) scale(1); 
+        filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+    }
+}
+
 .fade-in {
     animation: fadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
+/* =========================================
+   3. MAIN LAYOUT
+========================================= */
 .editorial-container {
     max-width: 950px;
     margin: 40px auto; 
     padding: 60px 40px;
     
-    /* --- THE GLASSMORPHISM EFFECT --- */
     background: var(--glass-bg); 
-    backdrop-filter: blur(20px); /* Blurs the moving colors behind the article */
-    -webkit-backdrop-filter: blur(20px); /* Safari support */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     
-    /* Creates the shiny edge of the glass */
     border: 1px solid var(--glass-border); 
     border-radius: 16px;
-    
-    /* Soft shadow to lift it off the screen */
     box-shadow: 0 30px 60px var(--glass-shadow);
     
-    /* Keeps the article layered properly above the background */
     position: relative;
     z-index: 10;
-    
-    /* Smooth theme switching */
     transition: background 0.6s ease, border 0.6s ease, box-shadow 0.6s ease;
 }
-/* --- HEADER STYLING --- */
+
+/* =========================================
+   4. HEADER & BYLINE
+========================================= */
 .article-header {
     text-align: center;
     margin-bottom: 60px;
@@ -92,7 +110,6 @@
     line-height: 1.6;
 }
 
-/* --- BYLINE STYLING --- */
 .author-byline {
     display: flex;
     align-items: center;
@@ -125,7 +142,9 @@
     color: var(--text-light);
 }
 
-/* --- INTRO (CENTER TROPHY) --- */
+/* =========================================
+   5. ARTICLE BODY (TROPHY & TEXT)
+========================================= */
 .intro-wrapper {
     position: relative;
     display: flex;
@@ -165,7 +184,6 @@
     animation: float 6s ease-in-out infinite;
 }
 
-/* Invisible shapes for wrapping */
 .invisible-shape-left {
     float: right;
     width: 130px;
@@ -182,7 +200,6 @@
     margin-right: 20px;
 }
 
-/* --- DRAMATIC PULL QUOTE --- */
 .pull-quote {
     font-family: var(--font-heading);
     font-size: 1.6rem;
@@ -201,7 +218,9 @@
     margin: 80px 0;
 }
 
-/* --- MILESTONES (WATERMARK CARDS) --- */
+/* =========================================
+   6. CARDS & GRIDS (Facts, Matches, Nations)
+========================================= */
 .section-heading {
     font-family: var(--font-heading);
     font-size: 2.6rem;
@@ -217,13 +236,13 @@
     margin-bottom: 50px;
 }
 
-.facts-grid {
+.facts-grid, .nation-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 25px;
 }
 
-.fact-card {
+.fact-card, .nation-card, .match-article {
     background: var(--card-bg);
     padding: 30px 25px;
     border-radius: 12px;
@@ -234,13 +253,20 @@
     border: 1px solid rgba(0,0,0,0.04);
 }
 
-.fact-card:hover {
+.match-article {
+    padding: 0;
+    border-radius: 16px;
+}
+
+.fact-card:hover, .nation-card:hover, .match-article:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.fact-card:hover, .nation-card:hover {
     border-color: var(--accent-gold);
 }
 
-/* The giant watermark numbers */
 .fact-card::after {
     content: attr(data-number);
     position: absolute;
@@ -249,11 +275,11 @@
     font-size: 6rem;
     font-weight: 900;
     font-family: var(--font-ui);
-    color: rgba(197, 160, 89, 0.08); /* Very faint gold */
+    color: rgba(197, 160, 89, 0.08);
     z-index: 1;
 }
 
-.fact-card h4 {
+.fact-card h4, .nation-name {
     font-family: var(--font-ui);
     margin: 0 0 12px 0;
     font-size: 1.2rem;
@@ -262,16 +288,23 @@
     z-index: 2;
 }
 
-.fact-card p {
+.nation-name {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    margin: 0 0 15px 0;
+}
+
+.fact-card p, .nation-card p {
     margin: 0;
     font-size: 0.95rem;
     color: var(--text-light);
     position: relative;
     z-index: 2;
+    line-height: 1.7;
 }
 
-/* --- MATCH SUMMARIES (SCOREBOARD STYLE) --- */
-.matches-section {
+/* Match Specifics */
+.matches-section, .micro-nations-section {
     margin-top: 80px;
 }
 
@@ -279,19 +312,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
-}
-
-.match-article {
-    background: var(--card-bg);
-    padding: 0;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-    transition: transform 0.3s ease;
-}
-
-.match-article:hover {
-    transform: scale(1.02);
 }
 
 .digital-scoreboard {
@@ -305,10 +325,7 @@
     font-weight: 800;
 }
 
-.team {
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-}
+.team { font-size: 1.4rem; letter-spacing: 2px; }
 
 .score-box {
     background: #1A252F;
@@ -331,7 +348,28 @@
     padding-bottom: 25px;
 }
 
-/* --- OPINION HIGHLIGHT (PREMIUM DARK) --- */
+/* Nation Specifics */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.flag-icon { font-size: 3rem; line-height: 1; }
+.debut-badge {
+    background: rgba(197, 160, 89, 0.1);
+    color: var(--accent-gold);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-family: var(--font-ui);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* =========================================
+   7. EDITOR'S OPINION (DARK BOX)
+========================================= */
 .opinion-highlight {
     background: linear-gradient(145deg, var(--accent-dark), #1A252F);
     color: white;
@@ -352,7 +390,6 @@
     text-transform: uppercase;
     padding: 6px 12px;
     border-radius: 4px;
-    letter-spacing: 1px;
 }
 
 .opinion-title {
@@ -377,126 +414,87 @@
     padding-left: 20px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 800px) {
-    .intro-wrapper, .match-blocks, .facts-grid {
-        flex-direction: column;
-        display: block;
-    }
-    .center-overlay-trophy {
-        position: relative;
-        transform: none;
-        left: 0;
-        margin: 0 auto 30px auto;
-        display: block;
-        animation: none;
-    }
-    .invisible-shape-left, .invisible-shape-right {
-        display: none;
-    }
-    .main-title {
-        font-size: 2.8rem;
-    }
-}
-
-/* --- MICRO NATIONS (DEBUT CARDS) --- */
-.micro-nations-section {
-    margin-top: 80px;
-}
-
-.nation-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.nation-card {
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    border: 1px solid rgba(0,0,0,0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-bottom: 4px solid transparent;
-}
-
-.nation-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-    border-bottom: 4px solid var(--accent-gold);
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.flag-icon {
-    font-size: 3rem;
-    line-height: 1;
-}
-
-.debut-badge {
-    background: rgba(197, 160, 89, 0.1); /* Transparent Gold */
-    color: var(--accent-gold);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-family: var(--font-ui);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.nation-name {
-    font-family: var(--font-heading);
-    font-size: 2.2rem;
-    color: var(--accent-dark);
-    margin: 0 0 15px 0;
-}
-
-.nation-card p {
-    color: var(--text-light);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin: 0;
-}
 /* =========================================
-   DARK MODE OVERRIDES & FIXES
+   8. DARK MODE FIXES
 ========================================= */
-
-/* 1. Fix the Match Cards, Fact Cards, and Nation Cards staying white */
 .container.dark .match-article,
 .container.dark .fact-card,
 .container.dark .nation-card {
-    background: rgba(20, 25, 35, 0.85); /* Deep dark blue/black background */
-    border: 1px solid rgba(255, 255, 255, 0.08); /* Faint reflection edge */
+    background: rgba(20, 25, 35, 0.85); 
+    border: 1px solid rgba(255, 255, 255, 0.08); 
 }
 
-/* Ensure the text inside the dark cards is a crisp, readable light grey */
 .container.dark .match-article p,
 .container.dark .fact-card p,
-.container.dark .nation-card p {
-    color: #A0AEC0; 
-}
+.container.dark .nation-card p { color: #A0AEC0; }
 
-/* Ensure card sub-titles are pure white */
 .container.dark .fact-card h4,
-.container.dark .nation-card .nation-name {
-    color: #FFFFFF; 
-}
+.container.dark .nation-card .nation-name { color: #FFFFFF; }
 
-/* 2. Fix the Editor's Opinion box turning silver/white */
 .container.dark .opinion-highlight {
-    /* Forces a sleek, dark gradient instead of using the white title variable */
     background: linear-gradient(145deg, #0B0E14, #1A252F); 
     border-top: 4px solid var(--accent-gold);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
 }
+.container.dark .opinion-highlight p { color: #E2E8F0; }
 
-/* Make sure the text inside the opinion box stays light */
-.container.dark .opinion-highlight p {
-    color: #E2E8F0; 
+/* =========================================
+   9. MOBILE & TABLET RESPONSIVENESS
+========================================= */
+/* Stop horizontal scrolling */
+html, body {
+    overflow-x: clip; 
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 850px) {
+    /* Stack text columns and grids */
+    /* Stack the text and image vertically */
+    .intro-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+
+    /* --- BULLETPROOF MOBILE TROPHY LAYOUT --- */
+    /* --- BULLETPROOF MOBILE TROPHY LAYOUT --- */
+    .center-overlay-trophy {
+        position: relative !important; 
+        float: right !important;       /* Floats the trophy to the right edge */
+        margin: 10px 0 15px 25px !important; /* Creates a clean gap between text and image */
+        
+        transform: translateX(0); 
+        left: auto !important;
+        top: auto !important;
+        display: block !important;
+        
+        width: 140px !important;       /* Scaled down so text has room to breathe */
+        
+        /* The levitation animation continues to play! */
+        animation: levitateTrophy 4s ease-in-out infinite !important;
+    }
+    /* Adjust main container for small screens */
+    .editorial-container {
+        padding: 30px 20px !important; 
+        margin: 40px 15px 20px 15px !important;
+        width: auto;
+        box-sizing: border-box;
+    }
+
+    .main-title { font-size: 2.2rem !important; }
+
+    /* Hide the invisible text-wrap shapes */
+    .invisible-shape-left, .invisible-shape-right {
+        display: none;
+    }
+
+    /* --- BULLETPROOF MOBILE TROPHY LAYOUT --- */
+    /* Target ONLY the trophy class, leaving your "DA" logo alone! */
+    
+
+    /* Ensure standard images don't break width */
+    img { max-width: 100%; height: auto; }
 }
