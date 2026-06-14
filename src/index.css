@@ -10,17 +10,16 @@
 .container.light {
   --text-main: #1A202C;
   
-  /* A rich, atmospheric mix of floodlight gold, twilight blue, and warm slate */
+  /* The Official Indian Flag: Saffron, White, Green (repeating Saffron for a smooth animation loop) */
   --mesh-bg: linear-gradient(
     -45deg, 
-    #66dee0, /* Twilight Blue */
-    #66d178, /* Warm Floodlight Gold */
-    #d7dc74, /* Atmospheric Slate/Grey */
-    #e660da  /* Soft Rim Light Cream */
+    #FF9933, /* India Saffron */
+    #FFFFFF, /* White */
+    #138808, /* India Green */
+    #FF9933  /* India Saffron (Loop) */
   );
-  
-  /* Slightly warmer, more opaque glass to contrast the richer background */
-  --glass-bg: rgba(250, 248, 245, 0.65);
+  /* Clean frosted glass to sit on top of the flag */
+  --glass-bg: rgba(255, 255, 255, 0.55);
   --glass-border: rgba(255, 255, 255, 0.6);
   --glass-shadow: rgba(0, 0, 0, 0.12);
 }
@@ -29,19 +28,19 @@
 /* --- 3. DARK MODE (Obsidian & Twilight Gold) --- */
 .container.dark {
   --text-main: #E2E8F0;
-  
-  /* THIS IS THE MISSING LINE FIXING YOUR TITLES! */
   --accent-dark: #FFFFFF; 
   
-  /* A deep, rich mix of midnight blue, charcoal, and dark stadium gold */
+  /* Deep, rich versions of the Indian Flag for comfortable night reading */
   --mesh-bg: linear-gradient(
     -45deg, 
-    #01124c, 
-    #004e08, 
-    #4e5a00, 
-    #3c0039
+    #995200, /* Deep Saffron */
+    #333333, /* Silver/Midnight White */
+    #094003, /* Deep Forest Green */
+    #995200  /* Deep Saffron (Loop) */
   );
-  --glass-bg: rgba(15, 20, 30, 0.65);
+  
+  /* Dark glass */
+  --glass-bg: rgba(15, 20, 30, 0.75);
   --glass-border: rgba(255, 255, 255, 0.05);
   --glass-shadow: rgba(0, 0, 0, 0.4);
 }
@@ -57,7 +56,7 @@
   /* The Animated Gradient */
   background: var(--mesh-bg);
   background-size: 300% 300%;
-  animation: gradientBreath 20s ease infinite;
+  animation: gradientBreath 15s ease infinite; /* Slightly faster for a nice waving effect */
   background-attachment: fixed;
   
   /* Critical: Keeps the grain texture contained */

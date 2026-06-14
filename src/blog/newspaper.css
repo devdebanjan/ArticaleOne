@@ -1,0 +1,267 @@
+/* =========================================
+   VIBRANT & PREMIUM DIGITAL MAGAZINE
+   Fluid Typography + Colorful Glassmorphism
+========================================= */
+
+/* --- 1. THE GLASS CONTAINER --- */
+.newspaper-container {
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
+    color: #1F2937; 
+    max-width: 850px; 
+    margin: 40px auto; 
+    padding: clamp(25px, 5vw, 50px); /* Fluid padding */
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.1); 
+    border: 1px solid rgba(255, 255, 255, 0.8); 
+    border-radius: 24px; 
+    position: relative;
+    z-index: 10;
+    font-family: 'Inter', -apple-system, sans-serif; 
+}
+
+/* DARK MODE OVERRIDE */
+.container.dark .newspaper-container {
+    background: rgba(15, 23, 42, 0.85); 
+    color: #F3F4F6; 
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+}
+
+/* --- 2. LUXURY & COLORFUL TYPOGRAPHY --- */
+.news-header {
+    border-bottom: 3px solid transparent;
+    /* Vibrant Sunset Gradient Border */
+    border-image: linear-gradient(to right, #FF512F, #DD2476, #4364F7) 1;
+    padding: 20px 0 30px 0;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.news-section {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0 0 20px 0;
+    /* Vibrant Pink/Orange Gradient Text */
+    background: linear-gradient(135deg, #FF512F, #DD2476);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.news-headline {
+    font-family: 'Playfair Display', serif; 
+    font-size: clamp(2.5rem, 6vw, 4rem); /* Fluid sizing */
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0 0 20px 0;
+    letter-spacing: -1px;
+    color: #111827;
+}
+.container.dark .news-headline { color: #FFFFFF; }
+
+.news-subhead {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    font-weight: 400;
+    color: #4B5563;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 90%;
+}
+.container.dark .news-subhead { color: #9CA3AF; }
+
+/* --- 3. COLORFUL BYLINE --- */
+.news-byline-block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 25px;
+    margin-bottom: 40px;
+}
+.container.dark .news-byline-block { border-bottom: 1px solid rgba(255,255,255,0.08); }
+
+.news-author-pic {
+    width: 55px;
+    height: 55px;
+    /* Bright Blue Gradient Avatar */
+    background: linear-gradient(135deg, #0052D4, #4364F7);
+    color: #FFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    box-shadow: 0 6px 20px rgba(67, 100, 247, 0.4); 
+}
+
+.news-author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.news-author-name {
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
+}
+
+.news-author-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #DD2476; /* Vibrant Pink Accent */
+    letter-spacing: 1.5px;
+    margin-top: 2px;
+}
+
+/* --- 4. COLORFUL DROP CAP & BODY --- */
+.news-body p {
+    font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+    line-height: 1.85; 
+    margin-bottom: 28px;
+    color: #374151;
+}
+.container.dark .news-body p { color: #D1D5DB; }
+
+.news-drop-cap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.8rem;
+    font-weight: 900;
+    float: left;
+    line-height: 0.8;
+    padding-right: 15px;
+    padding-top: 8px;
+    /* Cyan & Blue Gradient for the Big Letter */
+    background: linear-gradient(135deg, #0052D4, #1BFFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.news-crosshead {
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 3vw, 1.8rem);
+    color: #111827;
+    margin: 55px 0 25px 0;
+    padding-left: 15px;
+    border-left: 5px solid #FF512F; /* Vibrant Orange Indicator */
+}
+.container.dark .news-crosshead { color: #FFF; }
+
+/* --- 5. COLORFUL PULL QUOTES --- */
+.news-pullquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.4;
+    margin: 50px 0;
+    padding: 35px 40px;
+    /* Soft Colorful Background */
+    background: linear-gradient(to right, rgba(221, 36, 118, 0.05), transparent);
+    border-left: 5px solid #DD2476;
+    border-radius: 0 16px 16px 0;
+    color: #DD2476;
+}
+.container.dark .news-pullquote {
+    background: linear-gradient(to right, rgba(221, 36, 118, 0.15), transparent);
+    color: #FF7EB3;
+}
+
+.pullquote-attribution {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-top: 20px;
+    letter-spacing: 1.5px;
+    color: #4364F7;
+    font-style: normal;
+}
+.container.dark .pullquote-attribution { color: #6FB1FC; }
+
+/* --- 6. GLOWING IMAGES & PERFECT CUTOUTS --- */
+.news-hero-figure {
+    margin: 0 0 40px 0;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+}
+
+.news-hero-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.news-inline-figure {
+    width: 45%; 
+    margin-bottom: 15px;
+}
+
+.news-inline-figure.float-right { float: right; margin-left: 30px; }
+.news-inline-figure.float-left { float: left; margin-right: 30px; }
+
+.news-inline-image.cutout-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none !important; 
+    /* Colorful Glowing Shadow on Players */
+    filter: drop-shadow(0px 20px 25px rgba(0, 82, 212, 0.25)); 
+    transition: filter 0.3s ease;
+}
+.news-inline-image.cutout-img:hover {
+    filter: drop-shadow(0px 20px 30px rgba(255, 81, 47, 0.4)); 
+}
+
+.news-image-caption {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #6B7280;
+    margin-top: 15px;
+    line-height: 1.5;
+    text-align: right;
+    letter-spacing: 0.5px;
+}
+
+.news-inline-figure.cutout .news-image-caption {
+    border-top: 1px dashed rgba(0,0,0,0.15);
+    padding-top: 10px;
+}
+.container.dark .news-inline-figure.cutout .news-image-caption { border-top: 1px dashed rgba(255,255,255,0.15); }
+
+
+/* =========================================
+   7. SEAMLESS MOBILE FIXES 
+========================================= */
+@media (max-width: 768px) {
+    .newspaper-container {
+        margin: 15px 10px;
+        border-radius: 16px;
+    }
+
+    .news-pullquote {
+        padding: 25px 20px;
+    }
+
+    /* Kills floats so images neatly stack above text on phones */
+    .news-inline-figure.float-right,
+    .news-inline-figure.float-left {
+        float: none;
+        width: 100%;
+        margin: 40px 0;
+    }
+    
+    .news-image-caption {
+        text-align: left; 
+    }
+}

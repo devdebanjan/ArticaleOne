@@ -1,347 +1,397 @@
-/* --- ARCHIVE HEADER --- */
+/* =========================================
+   ARTICLES & ARCHIVES PAGE STYLING
+========================================= */
+
+.editorial-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* --- 1. HEADER --- */
 .archive-header {
     text-align: center;
     margin-bottom: 60px;
 }
 
-/* --- FEATURED ARTICLE --- */
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #111827;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+.container.dark .main-title { color: #FFFFFF; }
+
+.sub-title {
+    font-size: 1.15rem;
+    color: #4B5563;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+.container.dark .sub-title { color: #9CA3AF; }
+
+/* --- 2. FEATURED ARTICLE (From edited-image_3.png) --- */
 .featured-card {
     display: flex;
-    background: var(--card-bg);
-    border: 1px solid var(--glass-border);
+    background: #FFFFFF;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 15px 35px var(--glass-shadow);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .featured-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 25px 50px var(--glass-shadow);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.container.dark .featured-card {
+    background: #1F2937;
+    border-color: #374151;
 }
 
 .featured-image-wrapper {
     flex: 1;
-    overflow: hidden;
-    background: var(--bg-color);
+    min-width: 300px;
 }
 
 .featured-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.featured-card:hover .featured-image {
-    transform: scale(1.05);
 }
 
 .featured-content {
-    flex: 1;
+    flex: 1.2;
     padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.featured-title {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    color: var(--accent-dark);
+.category-tag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #c09e5b; /* The gold/mustard accent */
+    margin-bottom: 15px;
+    display: block;
+}
+
+.featured-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #4B1E7A; /* The purple text from your design */
+    margin-bottom: 15px;
     line-height: 1.2;
-    margin: 10px 0 20px 0;
 }
+.container.dark .featured-content h2 { color: #A78BFA; }
 
-.featured-excerpt {
-    font-size: 1.1rem;
-    color: var(--text-light);
-    margin-bottom: 30px;
-    line-height: 1.6;
+.featured-content p {
+    font-size: 1.05rem;
+    color: #4B5563;
+    line-height: 1.7;
+    margin-bottom: 25px;
 }
-
-.card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid var(--glass-border);
-    padding-top: 15px;
-}
+.container.dark .featured-content p { color: #D1D5DB; }
 
 .article-meta {
-    font-family: var(--font-ui);
     font-size: 0.85rem;
-    color: var(--text-light);
+    color: #6B7280;
     font-weight: 600;
-}
-
-.read-more-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    font-family: var(--font-ui);
-    font-weight: 700;
-    font-size: 0.9rem;
-    color: var(--accent-gold);
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: color 0.3s ease;
-}
-
-.read-more-btn svg {
-    width: 18px;
-    height: 18px;
-    transition: transform 0.3s ease;
-}
-
-.read-more-btn:hover {
-    color: var(--text-main);
-}
-
-.read-more-btn:hover svg {
-    transform: translateX(4px);
-}
-
-/* --- THE CINEMATIC ORBIT LOADER --- */
-.curation-section {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.loader-wrapper {
-    margin: 40px 0 80px 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    gap: 15px;
+    border-top: 1px solid #E5E7EB;
+    padding-top: 15px;
+}
+.container.dark .article-meta { border-color: #374151; }
+
+/* --- 3. ORNATE DIVIDER --- */
+.ornate-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #D1D5DB, transparent);
+    margin: 60px 0;
+}
+.container.dark .ornate-divider { background: linear-gradient(to right, transparent, #4B5563, transparent); }
+
+/* --- 4. STANDARD ARTICLES GRID (From edited-image_4.png) --- */
+.standard-articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
 }
 
-.premium-orbit-loader {
-    width: 80px;
-    height: 80px;
+.standard-card {
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.standard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.container.dark .standard-card { background: #1F2937; border-color: #374151; }
+
+.standard-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #4B1E7A;
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+.container.dark .standard-card h3 { color: #A78BFA; }
+
+.standard-card p {
+    font-size: 0.95rem;
+    color: #4B5563;
+    line-height: 1.6;
+}
+.container.dark .standard-card p { color: #9CA3AF; }
+
+/* --- 5. CURATION & OPEN CALL (From edited-image_2.png) --- */
+.curation-section {
+    margin-top: 20px;
+}
+
+/* Radar Animation */
+.radar-container {
     position: relative;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 30px;
-}
-.premium-orbit-loader::before,
-.premium-orbit-loader::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 2px solid var(--accent-gold);
-    opacity: 0;
-    animation: rippleExpand 3s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
 }
 
-/* Delays the second ring so they ripple one after another */
-.premium-orbit-loader::after {
-    animation-delay: 1.5s; 
-}
-
-.inner-dot {
-    width: 16px;
-    height: 16px;
-    background-color: var(--accent-gold);
+.radar-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #c09e5b;
     border-radius: 50%;
-    box-shadow: 0 0 20px var(--accent-gold);
     z-index: 2;
-    animation: pulseCenter 2s ease-in-out infinite;
 }
 
-@keyframes pulseCenter {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.4); opacity: 0.8; box-shadow: 0 0 30px var(--accent-gold); }
+.radar-pulse {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border: 2px solid rgba(192, 158, 91, 0.4);
+    background-color: rgba(192, 158, 91, 0.05);
+    border-radius: 50%;
+    animation: radar-gaze 2.5s infinite ease-out;
 }
 
-@keyframes rippleExpand {
-    0% { transform: scale(0.1); opacity: 1; border-width: 3px; }
-    100% { transform: scale(1.8); opacity: 0; border-width: 0px; }
+@keyframes radar-gaze {
+    0% { transform: scale(0.6); opacity: 1; }
+    100% { transform: scale(1.4); opacity: 0; }
 }
-.loading-text {
-    font-family: var(--font-heading);
+
+.curation-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.curation-header h3 {
+    font-family: 'Playfair Display', serif;
     font-size: 1.8rem;
-    color: var(--accent-dark);
-    margin: 0 0 10px 0;
-    letter-spacing: 1px;
+    color: #111827;
+    margin-bottom: 10px;
 }
+.container.dark .curation-header h3 { color: #FFF; }
 
-.loading-subtext {
-    color: var(--text-light);
+.curation-header p {
     font-size: 1.05rem;
+    color: #4B5563;
     max-width: 500px;
     margin: 0 auto;
     line-height: 1.6;
 }
+.container.dark .curation-header p { color: #9CA3AF; }
 
-/* --- CONTRIBUTION CTA BOX --- */
-.contribute-cta-box {
-    background: var(--card-bg);
-    border: 1px solid var(--glass-border);
+/* The Upgraded Box */
+.upgraded-box {
+    background: #FFFFFF;
     border-radius: 16px;
     padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.04);
     display: flex;
     align-items: center;
-    gap: 40px;
-    text-align: left;
-    box-shadow: 0 15px 35px var(--glass-shadow);
-    position: relative;
-    overflow: hidden;
+    justify-content: space-between;
+    gap: 30px;
 }
+.container.dark .upgraded-box { background: #1F2937; border-color: #374151; }
 
-/* A subtle gold glowing line at the top of the CTA box */
-.contribute-cta-box::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-}
-
-.cta-content {
+.cta-text {
     flex: 2;
 }
 
-.cta-tag {
-    margin-bottom: 15px;
-    background: rgba(197, 160, 89, 0.1);
-    border: none;
+.open-call-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #c09e5b;
+    background-color: rgba(192, 158, 91, 0.1);
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
 
-.cta-title {
-    font-family: var(--font-heading);
+.cta-text h3 {
+    font-family: 'Playfair Display', serif;
     font-size: 2rem;
-    color: var(--accent-dark);
-    margin: 0 0 15px 0;
-}
-
-.cta-content p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--text-light);
+    color: #111827;
     margin-bottom: 15px;
 }
+.container.dark .cta-text h3 { color: #FFF; }
+
+.cta-text p {
+    font-size: 1rem;
+    color: #4B5563;
+    line-height: 1.7;
+}
+.container.dark .cta-text p { color: #D1D5DB; }
 
 .cta-highlight {
-    font-weight: bold;
-    color: var(--text-main) !important;
+    font-weight: 700;
+    color: #111827 !important;
+    margin-top: 15px;
 }
+.container.dark .cta-highlight { color: #FFF !important; }
 
 .cta-action {
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    color: #111827;
 }
 
-.publish-btn {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: var(--accent-gold);
-    color: #1A202C; /* Always dark text for high contrast */
-    padding: 16px 28px;
+.premium-btn {
+    background: #c09e5b;
+    color: #FFFFFF;
+    padding: 16px 32px;
     border-radius: 8px;
-    text-decoration: none;
-    font-family: var(--font-ui);
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(192, 158, 91, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.publish-icon {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
+.premium-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(192, 158, 91, 0.4);
 }
 
-.publish-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.5);
-    background: #1A202C;
-    color: var(--accent-gold);
-}
-
-.publish-btn:hover .publish-icon {
-    /* The pen icon smoothly draws upwards */
-    transform: translate(2px, -2px);
-}
-
-/* --- DARK MODE FIXES SPECIFIC TO ARTICLES PAGE --- */
-.container.dark .contribute-cta-box {
-    background: rgba(20, 25, 35, 0.85); 
-}
-.container.dark .cta-content p {
-    color: #A0AEC0;
-}
-.container.dark .cta-highlight {
-    color: #E2E8F0 !important;
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
 /* =========================================
-   ARTICLES PAGE - MOBILE FIXES
+   6. MOBILE RESPONSIVENESS
 ========================================= */
-@media (max-width: 850px) {
-    /* Fix Image 2: Stack the Featured Article image and text */
+@media (max-width: 768px) {
+    .main-title { font-size: 2.8rem; }
+    
     .featured-card {
-        flex-direction: column !important;
+        flex-direction: column;
     }
     
     .featured-image-wrapper {
-        width: 100% !important;
-        height: 250px !important; /* Prevents the image from taking up the whole screen */
+        min-height: 250px;
     }
     
     .featured-content {
-        padding: 25px !important;
+        padding: 25px;
     }
     
-    /* Fix Image 1: Stack the Contribute Box and Button */
-    .contribute-cta-box {
-        flex-direction: column !important;
-        text-align: center !important;
-        padding: 30px 20px !important;
-        gap: 20px !important;
+    .upgraded-box {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
     }
-
+    
     .cta-action {
+        justify-content: center;
         width: 100%;
         margin-top: 10px;
     }
-
-    .publish-btn {
+    
+    .premium-btn {
         width: 100%;
-        justify-content: center; /* Centers the text inside the button */
+        justify-content: center;
     }
 }
-
-/* =========================================
-   DARK MODE OVERRIDES & FIXES
-========================================= */
-
-/* 1. Force the cards to turn dark in night mode */
-.container.dark .featured-card,
-.container.dark .article-card {
-    background: rgba(15, 20, 30, 0.85); /* Deep stadium blue/black */
-    border: 1px solid rgba(255, 255, 255, 0.08);
+/* --- UPDATES FOR CATEGORY TAGS (The Outlined Pill) --- */
+.category-tag {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #c09e5b; 
+    border: 1px solid #c09e5b; /* Adds the gold border */
+    border-radius: 30px; /* Makes it a pill shape */
+    padding: 6px 16px;
+    display: inline-block;
+    margin-bottom: 15px;
+    width: max-content; /* Stops it from stretching */
 }
 
-/* 2. Keep the left side white so your trophy JPEG blends seamlessly */
-.container.dark .featured-image-wrapper {
-    background: #FFFFFF;
+/* --- MISSING IMAGE PLACEHOLDER --- */
+.image-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    background: linear-gradient(135deg, #111827, #374151);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #c09e5b;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    letter-spacing: 4px;
+    opacity: 0.8;
 }
 
-/* 3. Ensure the paragraph text is a readable light grey */
-.container.dark .featured-excerpt,
-.container.dark .card-excerpt,
-.container.dark .article-meta {
-    color: #A0AEC0; 
+/* --- "READ ARTICLE" BUTTON ON STANDARD CARDS --- */
+.read-more {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #c09e5b;
+    transition: color 0.2s ease;
+}
+
+.standard-card:hover .read-more {
+    color: #A78BFA; /* Changes color when you hover over the card */
+}
+
+/* Make standard cards use Flexbox to push the "Read More" link to the bottom */
+.standard-card {
+    display: flex;
+    flex-direction: column;
+}
+.standard-card p {
+    flex-grow: 1; /* Pushes the Read More link to the bottom */
 }
