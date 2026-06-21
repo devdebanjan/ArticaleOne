@@ -68,3 +68,12 @@
         right: 20px;
     }
 }
+
+.your-navbar-class {
+  background: transparent !important; /* Removes the hard black box */
+  position: absolute; /* Allows the article background to slide underneath */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100; /* Keeps the navbar clickable on top of the article */
+}

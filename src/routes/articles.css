@@ -127,9 +127,11 @@
 
 /* --- 4. STANDARD ARTICLES GRID (From edited-image_4.png) --- */
 .standard-articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px; /* Space between the cards */
+  margin-bottom: 60px;
+  width: 100%;
 }
 
 .standard-card {

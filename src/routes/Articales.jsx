@@ -44,6 +44,7 @@ const Articales = () => {
       <div className="ornate-divider"></div>
 
       {/* --- 2. ARCHIVE GRID --- */}
+      <h2 className="editorial-title">Editorial Section : </h2>
       {regularArticles.length > 0 && (
         <section className="standard-articles-grid">
           {regularArticles.map((article) => (
@@ -56,6 +57,7 @@ const Articales = () => {
           ))}
         </section>
       )}
+      
 
       {/* --- 3. CURATION & OPEN CALL CTA --- */}
       <section className="curation-section">

@@ -6,6 +6,8 @@ import squadImg from '../assets/squad.png';
 import jemmiImg from '../assets/jemmi.png';     
 import fulmaliImg from '../assets/fulmali.png'; 
 
+
+
 const T20Article = () => {
   return (
     <div className="newspaper-container fade-in">
@@ -126,7 +128,7 @@ const T20Article = () => {
           <strong>Official Team India Squad (2026):</strong><br />
           Harmanpreet Kaur (c), Smriti Mandhana (vc), Shafali Verma, Jemimah Rodrigues, Bharti Fulmali, Deepti Sharma, Richa Ghosh (wk), Shree Charani, Yastika Bhatia (wk), Nandani Sharma, Arundhati Reddy, Renuka Singh, Kranti Gaud, Shreyanka Patil, and Radha Yadav.
         </p>
-
+       
       </article>
     </div>
   );

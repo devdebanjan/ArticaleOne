@@ -5,44 +5,43 @@
   100% { background-position: 0% 50%; }
 }
 
-/* --- 2. LIGHT MODE (Champagne & Ice Blue) --- */
-/* --- 2. LIGHT MODE (Cinematic Stadium & Twilight Gold) --- */
+/* --- 2. LIGHT MODE (Ice Blue & Trophy Gold) --- */
 .container.light {
-  --text-main: #1A202C;
+  --text-main: #0f172a;
   
-  /* The Official Indian Flag: Saffron, White, Green (repeating Saffron for a smooth animation loop) */
+  /* A fresh, stunning sports gradient tribute to the "Women in Blue" */
   --mesh-bg: linear-gradient(
     -45deg, 
-    #FF9933, /* India Saffron */
-    #FFFFFF, /* White */
-    #138808, /* India Green */
-    #FF9933  /* India Saffron (Loop) */
+    #e0f2fe, /* Ice Blue */
+    #ffffff, /* Clean White */
+    #fef08a, /* Soft Trophy Gold */
+    #bae6fd  /* Bright Sky Blue */
   );
-  /* Clean frosted glass to sit on top of the flag */
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.6);
-  --glass-shadow: rgba(0, 0, 0, 0.12);
+  
+  /* Premium frosted glass */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-shadow: rgba(15, 23, 42, 0.08);
 }
 
-/* --- 3. DARK MODE (Obsidian & Twilight Gold) --- */
-/* --- 3. DARK MODE (Obsidian & Twilight Gold) --- */
+/* --- 3. DARK MODE (Midnight Sapphire & Neon Gold) --- */
 .container.dark {
-  --text-main: #E2E8F0;
-  --accent-dark: #FFFFFF; 
+  --text-main: #f8fafc;
+  --accent-dark: #ffffff; 
   
-  /* Deep, rich versions of the Indian Flag for comfortable night reading */
+  /* Deep, intimidating stadium lighting */
   --mesh-bg: linear-gradient(
     -45deg, 
-    #995200, /* Deep Saffron */
-    #333333, /* Silver/Midnight White */
-    #094003, /* Deep Forest Green */
-    #995200  /* Deep Saffron (Loop) */
+    #020617, /* Pitch Black */
+    #1e3a8a, /* Deep Sapphire Blue */
+    #0f172a, /* Midnight Blue */
+    #b45309  /* Deep Amber Gold */
   );
   
-  /* Dark glass */
-  --glass-bg: rgba(15, 20, 30, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.05);
-  --glass-shadow: rgba(0, 0, 0, 0.4);
+  /* Dark sleek glass */
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.5);
 }
 
 /* --- 4. APPLY TO MAIN CONTAINER --- */
@@ -55,8 +54,8 @@
   
   /* The Animated Gradient */
   background: var(--mesh-bg);
-  background-size: 300% 300%;
-  animation: gradientBreath 15s ease infinite; /* Slightly faster for a nice waving effect */
+  background-size: 400% 400%; /* Increased to 400% for a silkier, wider animation */
+  animation: gradientBreath 15s ease infinite; 
   background-attachment: fixed;
   
   /* Critical: Keeps the grain texture contained */
@@ -69,14 +68,14 @@
   content: "";
   position: fixed;
   top: 0; left: 0; width: 100vw; height: 100vh;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: -1;
 }
 
+/* --- 6. NAVBAR --- */
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 9999; /* Ensures it stays above the floating trophy */
+    z-index: 9999; /* Ensures it stays above the scrolling content */
 }
-
