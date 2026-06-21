@@ -84,7 +84,7 @@ const T20Article = () => {
           }}
         >
           <img src={fulmaliImg} alt="Fulmali" className="news-inline-image cutout-img" />
-          <figcaption className="news-image-caption">Bowler Fulmali addresses the media. PHOTO: GETTY</figcaption>
+          <figcaption className="news-image-caption">Batter Fulmali addresses the media. PHOTO: GETTY</figcaption>
         </figure>
 
         <p>
@@ -92,12 +92,12 @@ const T20Article = () => {
         </p>
 
         <p>
-          This disturbing double standard was recently highlighted by a viral cricket media reel featuring Indian national team bowler Fulmali. Subjected to superficial questioning about her appearance rather than her athletic merit or bowling statistics, she bravely pointed a finger back at society. 
+          This disturbing double standard was recently highlighted by a viral cricket media reel featuring Indian national team batter Fulmali. Subjected to superficial questioning about her appearance rather than her athletic merit or batting statistics, she bravely pointed a finger back at society. 
         </p>
 
         <blockquote className="news-pullquote">
           "It feels really bad when people question you based on your looks."
-          <span className="pullquote-attribution">— Fulmali, Indian National Team Bowler</span>
+          <span className="pullquote-attribution">— Fulmali, Indian National Team Batter</span>
         </blockquote>
 
         <p>
