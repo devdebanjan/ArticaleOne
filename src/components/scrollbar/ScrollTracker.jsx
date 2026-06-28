@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function ScrollTracker() {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [isHoveredTop, setIsHoveredTop] = useState(false);
-  const [isHoveredBottom, setIsHoveredBottom] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,11 +11,12 @@ export default function ScrollTracker() {
       
       if (windowHeight === 0) return;
       
-      const scroll = `${totalScroll / windowHeight}`;
+      const scroll = totalScroll / windowHeight;
       setScrollProgress(Math.round(scroll * 100));
     };
     
     window.addEventListener('scroll', handleScroll);
+    // Run once on mount to set initial position
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
@@ -26,109 +26,118 @@ export default function ScrollTracker() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const scrollToBottom = () => {
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
-  };
+  // SVG Circle Math for the progress ring
+  const radius = 24;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (scrollProgress / 100) * circumference;
 
   return (
     <div 
       style={{
         position: 'fixed',
         bottom: '40px',
-        left: '40px',
+        right: '40px', /* Moved to the right for better reading UX */
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        background: 'var(--glass-bg)', 
-        backdropFilter: 'blur(24px)',
-        WebkitBackdropFilter: 'blur(24px)',
-        border: '1px solid var(--glass-border)',
-        borderRadius: '50px',
-        boxShadow: '0 25px 50px var(--glass-shadow)',
         zIndex: 9999,
-        fontFamily: "'Outfit', sans-serif",
-        overflow: 'hidden', /* Keeps the hover effects inside the pill bounds */
-        width: '56px',
-        transition: 'all 0.4s ease'
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* ── STYLISH TOP BUTTON ── */}
       <button 
         onClick={scrollToTop}
-        onMouseEnter={() => setIsHoveredTop(true)}
-        onMouseLeave={() => setIsHoveredTop(false)}
         style={{
-           background: isHoveredTop ? '#ea580c' : 'transparent',
-           color: isHoveredTop ? '#ffffff' : 'var(--text-main)',
-           border: 'none',
-           width: '100%',
-           height: '60px',
-           display: 'flex',
-           justifyContent: 'center',
-           alignItems: 'center',
-           cursor: 'pointer',
-           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          position: 'relative',
+          width: '64px',
+          height: '64px',
+          borderRadius: '50%',
+          background: 'var(--glass-bg, rgba(243, 244, 246, 0.8))', 
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          border: 'none',
+          boxShadow: isHovered 
+            ? '0 10px 25px rgba(234, 88, 12, 0.25)' 
+            : '0 4px 12px rgba(0,0,0,0.08)',
+          cursor: 'pointer',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
+          padding: 0,
         }}
-        title="Jump to Top"
+        title="Back to Top"
       >
+        {/* The SVG Progress Ring Container */}
         <svg 
-          width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+          width="64" 
+          height="64" 
+          style={{ 
+            position: 'absolute', 
+            top: 0, 
+            left: 0, 
+            transform: 'rotate(-90deg)' /* Starts the ring at the top (12 o'clock) */
+          }}
+        >
+          {/* Faint Background Track */}
+          <circle 
+            cx="32" 
+            cy="32" 
+            r={radius} 
+            fill="transparent" 
+            stroke="rgba(128, 128, 128, 0.2)" 
+            strokeWidth="3" 
+          />
+          {/* Active Saffron Orange Progress Ring */}
+          <circle 
+            cx="32" 
+            cy="32" 
+            r={radius} 
+            fill="transparent" 
+            stroke="#ea580c" 
+            strokeWidth="3" 
+            strokeDasharray={circumference}
+            strokeDashoffset={strokeDashoffset}
+            strokeLinecap="round"
+            style={{ transition: 'stroke-dashoffset 0.1s ease-out' }}
+          />
+        </svg>
+
+        {/* Up Arrow Icon */}
+        <svg 
+          width="24" 
+          height="24" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke={isHovered ? '#ea580c' : 'var(--text-main, #111827)'} 
+          strokeWidth="2.5" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
           style={{
-            transform: isHoveredTop ? 'translateY(-4px)' : 'translateY(0)',
-            transition: 'transform 0.3s ease'
+            transition: 'stroke 0.3s ease',
+            zIndex: 1 
           }}
         >
           <path d="M12 19V5M5 12l7-7 7 7"/>
         </svg>
       </button>
 
-      {/* ── BOLD PERCENTAGE HUD ── */}
+      {/* Fade-in Percentage Text */}
       <div 
-        style={{ 
-          width: '100%',
-          padding: '12px 0', 
-          fontSize: '14px', 
-          fontWeight: '900',
-          letterSpacing: '1px',
-          textAlign: 'center',
-          color: '#ea580c', // Saffron orange to match your current theme
-          borderTop: '1px solid rgba(128, 128, 128, 0.2)',
-          borderBottom: '1px solid rgba(128, 128, 128, 0.2)',
-          background: 'rgba(0,0,0,0.02)'
+        style={{
+          marginTop: '12px',
+          fontSize: '14px',
+          fontWeight: '800',
+          color: '#ea580c',
+          opacity: isHovered ? 1 : 0,
+          transform: isHovered ? 'translateY(0)' : 'translateY(-10px)',
+          transition: 'all 0.3s ease',
+          pointerEvents: 'none',
         }}
       >
         {scrollProgress}%
       </div>
-
-      {/* ── STYLISH BOTTOM BUTTON ── */}
-      <button 
-        onClick={scrollToBottom}
-        onMouseEnter={() => setIsHoveredBottom(true)}
-        onMouseLeave={() => setIsHoveredBottom(false)}
-        style={{
-           background: isHoveredBottom ? '#ea580c' : 'transparent',
-           color: isHoveredBottom ? '#ffffff' : 'var(--text-main)',
-           border: 'none',
-           width: '100%',
-           height: '60px',
-           display: 'flex',
-           justifyContent: 'center',
-           alignItems: 'center',
-           cursor: 'pointer',
-           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        }}
-        title="Jump to Bottom"
-      >
-        <svg 
-          width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-          style={{
-            transform: isHoveredBottom ? 'translateY(4px)' : 'translateY(0)',
-            transition: 'transform 0.3s ease'
-          }}
-        >
-          <path d="M12 5v14M19 12l-7 7-7-7"/>
-        </svg>
-      </button>
     </div>
   );
 }

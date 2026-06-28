@@ -100,7 +100,7 @@ export default function LikeButton({ articleId }) {
           transform: isHovered ? 'translateY(-2px)' : 'none',
         }}
       >
-        <span>{hasLiked ? '🔥' : '🤍'}</span>
+        <span>{hasLiked ? '❤️' : '♡'}</span>
         <span>{likes} {likes === 1 ? 'Like' : 'Likes'}</span>
       </button>
     </div>

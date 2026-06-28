@@ -1,0 +1,346 @@
+/* ── MAIN CONTAINER ── */
+.journal-container {
+  max-width: 900px; /* Constrains width on large screens */
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main); 
+}
+
+/* ── TYPOGRAPHY ── */
+.main-heading {
+  color: var(--text-main);
+  font-style: italic;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.section-title {
+  color: var(--text-main);
+  font-size: 26px;
+  font-weight: 800;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.match-score {
+  color: var(--text-main);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.highlight-text {
+  color: var(--text-main);
+  font-weight: 800;
+  margin: 25px 0;
+  font-size: 18px;
+}
+
+.image-caption {
+  color: #6b7280;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.author-date {
+  font-weight: 700;
+  color: #ea580c; /* Uses your saffron orange */
+  margin-top: 15px;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* ── IMAGES (RESPONSIVE) ── */
+.image-gallery {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.banner-img {
+  width: 50%; /* Splits the space equally */
+  height: auto; 
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* .feature-img {
+  width: 80%;
+  height: 10%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 25px;
+} */
+
+.feature-img {
+  width: 100%;
+  height: auto;
+  max-height: 800px; /* Increased massively to allow tall images to breathe */
+  object-fit: contain; /* Tells the browser: "Do NOT crop this, fit the whole thing!" */
+  border-radius: 12px;
+  margin-bottom: 25px;
+  background-color: rgba(0, 0, 0, 0.05); /* Adds a subtle dark tint behind the image if it doesn't span the full width */
+}
+
+/* ── CONTENT BLOCKS ── */
+.content-block p {
+  line-height: 1.8;
+  margin-bottom: 25px;
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+.custom-line {
+  border: none;
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.2); /* Soft universal divider */
+  width: 100%;
+  margin: 40px 0;
+}
+
+/* ── BULLETPROOF LINKS ── */
+.content-block a {
+  color: #0284c7 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.content-block a:hover {
+  color: #0369a1 !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 4px !important;
+}
+
+/* ── MATCH RECAP GRID (RESPONSIVE) ── */
+.recap-grid {
+  display: grid;
+  /* This creates columns automatically based on screen width! */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.recap-card {
+  background: var(--glass-bg, #f3f4f6); 
+  border: 1px solid var(--glass-border, #e5e7eb);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.recap-card:hover {
+  transform: translateY(-5px);
+}
+
+.group-title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 800;
+  border-bottom: 2px solid rgba(128, 128, 128, 0.2);
+  padding-bottom: 10px;
+}
+
+.group-match {
+  margin: 0 0 15px 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+.group-match:last-child {
+  margin-bottom: 0;
+}
+
+/* ── MOBILE RESPONSIVENESS (THE MAGIC PART) ── */
+/* ── MOBILE RESPONSIVENESS ── */
+@media (max-width: 768px) {
+  .image-gallery {
+    flex-direction: column; 
+    gap: 15px; /* Adds a nice space between the stacked images */
+  }
+  
+  .banner-img {
+    width: 100%; 
+    height: auto; 
+    max-height: none; /* Removes the height restriction causing the crop */
+    object-position: top center; /* Ensures the top of the photo (faces) stays in frame */
+  }
+  
+  .main-heading {
+    font-size: 24px; 
+    line-height: 1.4;
+  }
+
+  .journal-container {
+    padding: 15px;
+  }
+}
+
+p a {
+  color: var(--link-main) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  transition: color 0.3s ease !important;
+}
+
+a {
+   color: #0284c7 !important;
+}
+/* ── THE CLICKABLE THUMBNAIL ── */
+.clickable-bracket {
+  cursor: zoom-in; /* Changes the mouse icon to a magnifying glass */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clickable-bracket:hover {
+  transform: scale(1.02); /* Slight pop effect when hovering */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ── THE FULL SCREEN OVERLAY ── */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.95); /* Deep dark blue/black background */
+  backdrop-filter: blur(8px); /* Blurs the website behind it */
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999; /* Ensures it sits on top of absolutely everything, including the nav bar */
+  cursor: zoom-out; /* Tells the user clicking anywhere will close it */
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* ── THE ENLARGED IMAGE ── */
+.lightbox-img {
+  max-width: 95vw; 
+  max-height: 90vh; 
+  object-fit: contain; 
+  border-radius: 8px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  cursor: default; /* Stops the image itself from showing the zoom-out cursor */
+}
+
+/* ── THE CLOSE BUTTON (X) ── */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: white;
+  font-size: 45px;
+  font-weight: 300;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+  color: #ea580c; /* Your saffron orange */
+}
+
+/* Smooth fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* ── ELIMINATED TEAMS CARD ── */
+.eliminated-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border, rgba(128, 128, 128, 0.2));
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+.eliminated-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px dashed rgba(128, 128, 128, 0.2);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  color: #ea580c; /* Saffron orange warning icon */
+}
+
+.eliminated-header h4 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.eliminated-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+}
+
+.eliminated-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.e-group-badge {
+  font-size: 12px;
+  font-weight: 800;
+  background-color: rgba(128, 128, 128, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+  width: fit-content;
+  color: var(--text-main);
+  opacity: 0.7;
+}
+
+.e-team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ── THE FOTMOB ELIMINATED EFFECT ── */
+.e-team-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  
+  /* Keeps the faded out look */
+  /* opacity: ;  */
+  
+  /* Keeps the strikethrough */
+  text-decoration: line-through; 
+  text-decoration-color: rgba(128, 128, 128, 0.5);
+  
+  /* Notice we deleted the 'filter: grayscale(100%);' line! */
+}
+
+/* Mobile Adjustments for the Card */
+@media (max-width: 768px) {
+  .eliminated-card {
+    padding: 20px;
+  }
+  
+  .eliminated-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+  }
+}

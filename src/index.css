@@ -9,13 +9,18 @@
 .container.light {
   --text-main: #0f172a;
   
+  /* NEW: Dynamic Theme Variables for Day Mode Polish */
+  --link-main: #0284c7; /* Deeper, readable blue for Day Mode links */
+  --image-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow to lift photos off the bright background */
+  --divider-line: rgba(128, 128, 128, 0.3); /* Faded, gentle gray for section dividers */
+  
   /* A fresh, stunning sports gradient tribute to the "Women in Blue" */
   --mesh-bg: linear-gradient(
     -45deg, 
-    #e0f2fe, /* Ice Blue */
+    #f5fee0, /* Ice Blue */
     #ffffff, /* Clean White */
-    #fef08a, /* Soft Trophy Gold */
-    #bae6fd  /* Bright Sky Blue */
+    #c0fe8a, /* Soft Trophy Gold */
+    #bebafd  /* Bright Sky Blue */
   );
   
   /* Premium frosted glass */
@@ -28,6 +33,11 @@
 .container.dark {
   --text-main: #f8fafc;
   --accent-dark: #ffffff; 
+  
+  /* NEW: Dynamic Theme Variables for Night Mode Polish */
+  --link-main: #00a7fa; /* Your original bright cyan for Night Mode links */
+  --image-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtler, darker shadow that blends into the night */
+  --divider-line: rgba(255, 255, 255, 0.15); /* Soft, translucent white for section dividers */
   
   /* Deep, intimidating stadium lighting */
   --mesh-bg: linear-gradient(
@@ -78,4 +88,27 @@
     position: sticky;
     top: 0;
     z-index: 9999; /* Ensures it stays above the scrolling content */
+}
+
+/* --- 7. DYNAMIC THEME POLISH (LINKS, IMAGES, DIVIDERS) --- */
+/* These elements now automatically read from the active theme variables above */
+
+p a {
+  color: var(--link-main) !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  transition: color 0.3s ease !important;
+}
+
+.banner-img, .feature-img {
+  box-shadow: var(--image-shadow);
+  transition: box-shadow 0.3s ease;
+}
+
+.custom-line {
+  border: none;
+  border-top: 1px dashed var(--divider-line); 
+  width: 100%;
+  margin: 40px 0;
+  transition: border-color 0.3s ease;
 }

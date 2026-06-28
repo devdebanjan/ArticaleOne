@@ -9,6 +9,7 @@ import T20Article from './blog/T20Article.jsx';  /* <--- YOU NEED TO ADD THIS EX
 import About from './routes/About.jsx';
 import Articales from './routes/Articales.jsx';
 import Recap from './blog/StrategicReviewArticle.jsx'
+import Neymar from './blog/Journal.jsx'
 
 // ... rest of your App.jsx code stays the same
 
@@ -21,12 +22,14 @@ const App = () => {
      
       <Routes>
           {/* --- TOMORROW: Make T20Article the Home Page --- */}
-          <Route path='/' element={<Recap className={`content ${theme}`} />} />
+          <Route path='/' element={<Neymar className={`content ${theme}`} />} />
           
           {/* Your archive links stay exactly the same */}
           <Route path='/fifa-memories' element={<Blog className={`content ${theme}`} />} />
           <Route path='/t20-world-cup' element={<T20Article className={`content ${theme}`} />} />
           <Route path='/Fifa-recap-week' element={<Recap className={`content ${theme}`} />}/>
+          <Route path='/Fifa-roundof32' element={<Neymar className={`content ${theme}`} />}/>
+          
           {/* Menus */}
           <Route path='/About' element={<About className={`background ${theme}`}/>} />
           <Route path='/Articales' element={<Articales className={`background ${theme}`}/>} />
